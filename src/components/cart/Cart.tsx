@@ -27,13 +27,15 @@ export default function Cart() {
               );
             })
           ) : (
-            <>empty cart</>
+            <p>your cart is currently empty...</p>
           )}
         </div>
-        <div className=' bg-tertiay w-full my-7 flex justify-between items-center p-5 rounded-md'>
-          <p>SubTotal:</p>
-          <p>${total.toFixed(2)}</p>
-        </div>
+        {cart.length > 0 && (
+          <div className=' bg-tertiay w-full my-7 flex justify-between items-center p-5 rounded-md'>
+            <p>SubTotal:</p>
+            <p>${total.toFixed(2)}</p>
+          </div>
+        )}
       </div>
     </main>
   );
@@ -64,7 +66,7 @@ const CartItem = (props: CartItemProp) => {
       </div>
       <div>
         <p>{displayedTitle}</p>
-        <p>${price}</p>
+        <p>${Number(price) * quantity}</p>
 
         <div className='flex items-center gap-2'>
           <Button
