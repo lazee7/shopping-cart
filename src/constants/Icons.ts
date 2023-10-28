@@ -5,6 +5,7 @@ import {
   ShoppingCart,
   XSquare,
   Trash2,
+  Loader2,
 } from 'lucide-react';
 
 const Icons = {
@@ -14,6 +15,7 @@ const Icons = {
   cart: ShoppingCart,
   close: XSquare,
   delete: Trash2,
+  loader: Loader2,
 };
 
 export default Icons;

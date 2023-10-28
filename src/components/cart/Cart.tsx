@@ -30,9 +30,9 @@ export default function Cart() {
             <>empty cart</>
           )}
         </div>
-        <div className='fixed bottom-0 bg-tertiay w-full'>
-          <p>Total:</p>
-          <p>${total}</p>
+        <div className=' bg-tertiay w-full my-7 flex justify-between items-center p-5 rounded-md'>
+          <p>SubTotal:</p>
+          <p>${total.toFixed(2)}</p>
         </div>
       </div>
     </main>

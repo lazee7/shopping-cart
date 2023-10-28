@@ -3,13 +3,14 @@ import { createContext, useState, useEffect } from 'react';
 import { API_URL } from '../constants/data';
 import toast from 'react-hot-toast';
 
-export type ProductsConextType = {
+export type ProductsContextType = {
   products: Product[] | null;
   isLoading: boolean;
   updateCategory: (value: string) => void;
+  category: string;
 };
 
-export const ProductsContext = createContext<ProductsConextType | null>(null);
+export const ProductsContext = createContext<ProductsContextType | null>(null);
 
 const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
   const [products, setProducts] = useState<Product[] | null>(null);
@@ -46,6 +47,7 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
     products,
     isLoading,
     updateCategory,
+    category,
   };
 
   return (

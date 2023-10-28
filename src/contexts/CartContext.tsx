@@ -63,7 +63,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         },
       ];
     });
-    setShowCart(true);
+    // setShowCart(true);
   };
 
   const calculateTotalPrice = () => {
