@@ -20,22 +20,24 @@ export type CartContextType = {
 
 export const CartContext = createContext<CartContextType | null>(null);
 
-// const initialState = JSON.parse(localStorage.getItem('cart') as string) ?? [];
+const initialState = JSON.parse(localStorage.getItem('cart') as string) ?? [];
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<Cart[] | []>([]);
+  const [cart, setCart] = useState<Cart[] | []>(initialState);
   const [showCart, setShowCart] = useState(false);
   const [total, setTotal] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const { products } = useProducts();
 
-  // useEffect(() => {
-  //   localStorage.setItem('cart', JSON.stringify(cart));
-  // }, [cart]);
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   useEffect(() => {
-    calculateTotalPrice();
-    totalItemsInCart();
+    if (cart.length > 0) {
+      calculateTotalPrice();
+      totalItemsInCart();
+    }
   }, [cart]);
 
   // add item to cart

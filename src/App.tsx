@@ -15,8 +15,7 @@ function App() {
       {showCart && <Cart />}
       <footer className='flex justify-center items-center pt-16 pb-2 flex-col gap-1 md:flex-row md:gap-7'>
         <p className='text-sm'>
-          made with <span className=' text-accent'>❤</span> by lazee &copy;
-          2023.
+          made with <span className=' text-accent'>❤</span> by zee &copy; 2023.
         </p>
         <p className='text-xs'>
           products data from{' '}
