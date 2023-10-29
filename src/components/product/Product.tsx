@@ -21,7 +21,7 @@ const Product = (props: Product) => {
           </div>
         </div>
       </div>
-      <p className='font-semibold relative after:content-[""] after:w-10 after:absolute after:border-accent after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:border-b-2 py-2'>
+      <p className='font-semibold relative after:content-[""] after:w-10 after:absolute after:border-accent after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:border-b-2 py-2 min-h-[7rem]'>
         {title}
       </p>
 
