@@ -1,4 +1,4 @@
-import { useDeferredValue, useState } from 'react';
+import { useDeferredValue, useMemo, useState } from 'react';
 import Icons from '../../constants/Icons';
 import useCategories from '../../hooks/useCategories';
 import useProducts from '../../hooks/useProducts';
@@ -16,9 +16,11 @@ const Products = () => {
   const [search, setSearch] = useState('');
   const query = useDeferredValue(search);
 
-  const filteredProducts = products?.filter(
-    (product) => Number(product.price) >= Number(query)
-  );
+  const filteredProducts = useMemo(() => {
+    return products
+      ?.filter((product) => Number(product.price) >= Number(query))
+      .sort((a, b) => Number(a.price) - Number(b.price));
+  }, [products, query]);
   return (
     <div className='md:flex md:gap-10 relative'>
       <div className='flex gap-2 mt-10 mb-7 overflow-x-scroll md:overflow-hidden pb-4 border-b border-primary/50 md:flex-col md:min-w-fit md:border-b-0 sticky top-10'>
