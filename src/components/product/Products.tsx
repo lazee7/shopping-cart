@@ -45,18 +45,20 @@ const Products = () => {
         ))}
       </div>{' '}
       <div>
-        <div className='pb-7 flex justify-end gap-2 items-center mb-4'>
-          <input
-            type='number'
-            name='search'
-            id='search'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className='outline-none rounded-lg w-20 placeholder:capitalize px-3  bg-secondary/50 py-1 text-sm'
-            placeholder='price'
-          />
-          <Icons.filter className='text-accent font-semibold ' />
-        </div>
+        {!isLoading && (
+          <div className='pb-7 flex justify-end gap-2 items-center mb-4'>
+            <input
+              type='number'
+              name='search'
+              id='search'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className='outline-none rounded-lg w-20 placeholder:capitalize px-3  bg-secondary/50 py-1 text-sm'
+              placeholder='price'
+            />
+            <Icons.filter className='text-accent font-semibold ' />
+          </div>
+        )}
         <section className='grid md:grid-cols-4 grid-cols-2 gap-2 md:gap-5'>
           {isLoading ? (
             <div className='place-self-center col-span-2 py-40 md:col-span-4 md:p-52'>
