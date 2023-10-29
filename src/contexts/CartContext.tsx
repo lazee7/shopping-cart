@@ -30,14 +30,13 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const { products } = useProducts();
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
     if (cart.length > 0) {
       calculateTotalPrice();
-      totalItemsInCart();
     }
+
+    totalItemsInCart();
+
+    localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
   // add item to cart
