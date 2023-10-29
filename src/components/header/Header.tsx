@@ -5,7 +5,7 @@ import Button from '../button/Button';
 const Header = () => {
   const { updateShowCart, totalItems } = useCart();
   return (
-    <header className='flex justify-between items-center md:pr-20 mb-10'>
+    <header className='flex justify-between items-center mb-10 sticky top-4 py-4 bg-body md:w-3/6 md:mx-auto rounded-xl px-5 shadow-sl z-50'>
       <h1 className='text-transparent bg-clip-text bg-gradient-to-br from-active to-accent text-xl font-bold'>
         zeeMart
       </h1>

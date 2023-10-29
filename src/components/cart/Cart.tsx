@@ -5,13 +5,13 @@ import Button from '../button/Button';
 export default function Cart() {
   const { cart, total, updateShowCart, totalItems } = useCart();
   return (
-    <main className='fixed bg-primary top-0 bottom-0 right-0 w-full md:w-1/2 text-secondary pt-10 px-10 h-full overflow-y-auto lg:w-1/3'>
+    <main className='fixed bg-primary top-0 bottom-0 right-0 w-full md:w-1/2 text-secondary pt-10 px-10 h-full overflow-y-auto lg:w-1/3 z-[100] transition-all animate-slide-in'>
       <div className='relative'>
         <header className='flex justify-between items-center mb-7'>
           <Button onClick={updateShowCart}>
             <Icons.close size={40} />
           </Button>
-          <h2 className='capitalize font-semibold'>my cart</h2>
+          <h2 className='capitalize font-semibold text-xl'>cart</h2>
           <p className='relative flex gap-1 items-center'>
             <Icons.cart />
             <span className='bg-accent rounded-lg p-2 w-4 h-4 font-mono absolute -top-1 -right-2 text-xs flex items-center justify-center border-2 border-primary'>
@@ -27,7 +27,9 @@ export default function Cart() {
               );
             })
           ) : (
-            <p>your cart is currently empty...</p>
+            <p className='text-center py-10 leading-8 tracking-wider'>
+              cart is currently empty...
+            </p>
           )}
         </div>
         {cart.length > 0 && (
@@ -55,6 +57,8 @@ const CartItem = (props: CartItemProp) => {
   const displayedTitle =
     title.length > 25 ? `${title.substring(0, 25)}...` : title;
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
+
+  const totalPrice = Number(price) * quantity;
   return (
     <div className='flex gap-2 items-center'>
       <div className='w-24 h-24 rounded-xl border border-accent p-1'>
@@ -66,7 +70,7 @@ const CartItem = (props: CartItemProp) => {
       </div>
       <div>
         <p>{displayedTitle}</p>
-        <p>${Number(price) * quantity}</p>
+        <p>${totalPrice.toFixed(2)}</p>
 
         <div className='flex items-center gap-2'>
           <Button
