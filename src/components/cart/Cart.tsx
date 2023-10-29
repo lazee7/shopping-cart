@@ -5,10 +5,13 @@ import Button from '../button/Button';
 export default function Cart() {
   const { cart, total, updateShowCart, totalItems } = useCart();
   return (
-    <main className='fixed bg-primary top-0 bottom-0 right-0 w-full md:w-1/2 text-secondary pt-10 px-10 h-full overflow-y-auto lg:w-1/3 z-[100] transition-all animate-slide-in'>
-      <div className='relative'>
-        <header className='flex justify-between items-center mb-7'>
-          <Button onClick={updateShowCart}>
+    <main className='fixed bg-primary top-0 bottom-0 right-0 w-full md:w-1/2 text-secondary pt-10 px-10 h-full overflow-y-auto lg:w-1/3 z-[100] transition-all animate-slide-in rounded-s-2xl'>
+      <div className='relative before:content-[""] before:absolute before:-top-9 before:-left-9 before:rounded-full  before:w-5 before:h-5 before:bg-secondary hover:before:bg-active/60'>
+        <header className='flex justify-between items-center mb-7 '>
+          <Button
+            onClick={updateShowCart}
+            className='group hover:text-red-500 text-accent'
+          >
             <Icons.close size={40} />
           </Button>
           <h2 className='capitalize font-semibold text-xl'>cart</h2>
@@ -60,34 +63,34 @@ const CartItem = (props: CartItemProp) => {
 
   const totalPrice = Number(price) * quantity;
   return (
-    <div className='flex gap-2 items-center'>
-      <div className='w-24 h-24 rounded-xl border border-accent p-1'>
+    <div className='flex gap-3 items-center border-b py-4 border-tertiay '>
+      <div className='min-w-[7rem] h-28 rounded-xl border border-accent p-1'>
         <img
           src={image}
           alt=''
-          className='object-cover w-full h-full rounded-xl'
+          className='object-cover w-full h-full rounded-xl border-x '
         />
       </div>
-      <div>
-        <p>{displayedTitle}</p>
-        <p>${totalPrice.toFixed(2)}</p>
+      <div className='flex flex-col gap-2'>
+        <p className='font-medium'>{displayedTitle}</p>
+        <p className='text-accent'>${totalPrice.toFixed(2)}</p>
 
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-3 '>
           <Button
             onClick={() => decreaseQuantity(id)}
             disabled={quantity === 1}
             className=' group'
           >
-            <Icons.minus className='group-disabled:text-tertiay' />
+            <Icons.minus className='group-disabled:text-tertiay group-hover:text-accent' />
           </Button>
           <p>{quantity}</p>
-          <Button onClick={() => increaseQuantity(id)}>
-            <Icons.plus />
+          <Button onClick={() => increaseQuantity(id)} className='group'>
+            <Icons.plus className='group-hover:text-accent' />
           </Button>
         </div>
       </div>
-      <Button onClick={() => removeFromCart(id)} className='ml-auto'>
-        <Icons.delete />
+      <Button onClick={() => removeFromCart(id)} className='ml-auto group'>
+        <Icons.delete className='group-hover:text-accent' />
       </Button>
     </div>
   );
